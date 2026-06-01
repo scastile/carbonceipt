@@ -308,7 +308,7 @@ function TransactionForm({ onAdd }: { onAdd: (t: Transaction) => void }) {
 
   return (
     <div className="card p-6">
-      <div className="flex flex-col sm:flex-row gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
         <input
           type="text"
           placeholder="What did you buy?"
@@ -344,7 +344,7 @@ function TransactionForm({ onAdd }: { onAdd: (t: Transaction) => void }) {
             "Track It"
           )}
         </button>
-      </div>
+      </form>
 
       {result && (
         <div
@@ -356,17 +356,17 @@ function TransactionForm({ onAdd }: { onAdd: (t: Transaction) => void }) {
         >
           <div
             className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"
-            style={{ background: `${categoryColor(result.category)}20` }}
+            style={{ background: `${categoryColor(result!.category)}20` }}
           >
-            {categoryEmoji(result.category)}
+            {categoryEmoji(result!.category)}
           </div>
           <div className="min-w-0">
             <p className="text-sm text-gray-400 truncate">
-              {result.description}{" "}
-              <span className="text-gray-600">— {formatUSD(result.amount)}</span>
+              {result!.description}{" "}
+              <span className="text-gray-600">— {formatUSD(result!.amount)}</span>
             </p>
-            <p className="text-xl font-extrabold mt-0.5" style={{ color: categoryColor(result.category) }}>
-              {formatCO2(result.co2_kg)} CO₂e
+            <p className="text-xl font-extrabold mt-0.5" style={{ color: categoryColor(result!.category) }}>
+              {formatCO2(result!.co2_kg)} CO₂e
             </p>
           </div>
         </div>
